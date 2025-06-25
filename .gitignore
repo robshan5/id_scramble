@@ -1,0 +1,5 @@
+# folder with the modules
+modules/
+
+#lock file
+*.lock
