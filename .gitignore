@@ -4,3 +4,6 @@ scrambled/
 
 #lock file
 *.lock
+
+# test text files
+*.txt
