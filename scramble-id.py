@@ -14,19 +14,19 @@ def main():
         print("Please provide file or directory for the grades")
     else:
         path = Path(sys.argv[1])
-        
+
         # checking if the argument is a file or directory
         if path.is_file():
             output = "scrambled.txt"
             changeFile(path, output)
         elif path.is_dir():
-            OUTPUTDIR = "scrambled"
+            OUTPUTDIR = "scrambled/"
             if not os.path.exists(OUTPUTDIR):
                 os.makedirs(OUTPUTDIR)
 
             # if it's a directory, iterate through all text files
             for file in path.rglob("*.txt"):
-                output = OUTPUTDIR.join(file.name)
+                output = OUTPUTDIR + file.name
                 changeFile(file, output)
         else:
             print(f"No such file or directory {path}")
@@ -41,7 +41,7 @@ def changeFile(fileName, outputPath):
         for each ID, add two to each digit and mod 10
         """
         output = open(outputPath, "w")
-        #iterate through all lines of the file
+        # iterate through all lines of the file
         for line in file:
             match = re.search(r"^\d{7,8}", line)
 
@@ -61,6 +61,7 @@ def changeFile(fileName, outputPath):
                 output.write("\n")
             else:
                 output.write(line)
+
 
 if __name__ == "__main__":
     main()
