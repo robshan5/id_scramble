@@ -1,5 +1,6 @@
 # folder with the modules
 modules/
+scrambled/
 
 #lock file
 *.lock
