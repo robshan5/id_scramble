@@ -12,20 +12,12 @@
         pkgs = import nixpkgs {
           inherit system;
         };
-        pythonEnv = pkgs.python3.withPackages(p: with p; [
-          numpy
-          pandas
-          matplotlib
-          seaborn
-        ]);
+        pythonEnv = pkgs.python3;
       in
       {
         devShell = pkgs.mkShell {
           packages = [
             pythonEnv
-          ];
-          nativeBuildInputs = with pkgs;[
-            jupyter-all
           ];
           shellHook = ''
             echo "Python environment activated"

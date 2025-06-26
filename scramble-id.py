@@ -1,7 +1,6 @@
 import fileinput
 import re
 
-output = open("scrambled-id.txt", "w")
 # iterate through all lines of the file
 for line in fileinput.input():
     match = re.search(r"^\d{7,8}", line)
@@ -17,9 +16,5 @@ for line in fileinput.input():
         id = "".join(id)
         new_line = line.replace(line.split()[0], str(id))
 
-        # write to the new file
-        output.write(new_line)
-        output.write("\n")
-    else:
-        output.write(line)
-
+        # write to standard output
+        print(new_line)
