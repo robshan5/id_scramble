@@ -8,18 +8,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "-m", "--mapping", help="declares the mapping of digits", required=True
 )
-parser.add_argument(
-    "-s",
-    "--step",
-    help="declares the step going through the map (default=1) [must be odd]",
-)
 
 args = parser.parse_args()
 mapping = args.mapping
-step = 1
-
-if args.step:
-    step = args.step
 
 if len(mapping) != 10:
     print("Please enter map of length 10 for all digits")
@@ -40,7 +31,7 @@ for line in sys.stdin:
             if value != "/":
                 # id[index] = str((int(value) + 2) % 10)
                 id[index] = mapping[(int(value) + modifier) % 10]
-                modifier = (modifier + step) % 10
+                modifier = (modifier + 1) % 10
             else:
                 break
         id = "".join(id)
